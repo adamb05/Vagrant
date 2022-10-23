@@ -1,10 +1,10 @@
----
+--
 - name: 
   hosts: all
   become: true
 
   vars: 
-    git_repository: "https://github.com/zchmielewska/Ansible_roles.git"
+    git_repository: "https://github.com/adamb05/Ansible_roles.git"
     git_branch: "master"
   
   tasks:
