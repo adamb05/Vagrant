@@ -7,13 +7,21 @@ Vagrant.configure("2") do |config|
     v.memory = 10240
     v.cpus = 3
   end
-  config.vm.network "private_network", ip: "192.168.44.44"
+  config.vm.network "private_network", ip: "192.168.56.44"
   
   config.vm.provision "ansible_local" do |ansible|
     ansible.playbook = "playbooks/clone_roles.yml"
     ansible.extra_vars = {
       git_repository: "https://github.com/adamb05/Ansible_roles.git",
-      git_branch: "master"
+      git_branch: "main"
+    }
+  end
+
+  config.vm.provision "ansible_local" do |ansible|
+    ansible.playbook = "playbooks/infrastructure.yml"
+    ansible.extra_vars = {
+      git_repository: "https://github.com/adamb05/Ansible_roles.git",
+      git_branch: "main"
     }
   end
   
